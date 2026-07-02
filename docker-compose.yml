@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  academic-advisor:
+    build: .
+    container_name: hermes_academic_rag
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./docs:/app/docs
+      - ./chroma_db:/app/chroma_db
+    network_mode: "host" # Allows the container to easily communicate with your local Ollama instance running on Pop!_OS
+    restart: unless-stopped
